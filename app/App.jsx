@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-export class App extends React.Component {
+export default class App extends React.Component {
+
+	static propTypes = {
+		children: PropTypes.element,
+	}
+
+
 	render() {
 		return (
 			<div>
-				App
+				header
+				{this.props.children}
 			</div>
 		);
 	}
