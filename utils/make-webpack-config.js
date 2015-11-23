@@ -15,11 +15,11 @@ const defaultOptions = {
 
 const root = path.join(__dirname, '..');
 const debug = process.env.NODE_ENV === 'development';
-const entry = ['webpack-hot-middleware/client'];
+const devEntry = ['webpack-hot-middleware/client', 'component-inspector/dist/react'];
 
 export default function makeWebpackConfig(options = defaultOptions) {
 	const config = {
-		entry: (debug ? entry : []).concat([
+		entry: (debug ? devEntry : []).concat([
 			'./app/index',
 		]),
 		output: {

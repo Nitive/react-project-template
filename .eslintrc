@@ -12,6 +12,7 @@ globals:
   OPTIMIZED: true
 
 rules:
+  arrow-parens: [1, 'as-needed']
   indent: [2, 'tab']
   jsx-quotes: [2, 'prefer-single']
   id-length: 0

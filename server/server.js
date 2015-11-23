@@ -2,12 +2,13 @@ import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
 import makeConfig from '../utils/make-webpack-config';
+const debug = require('debug')('react-project-template');
 
 const config = makeConfig();
 const app = express();
 const compiler = webpack(config);
 
-console.log(`NODE_ENV is ${process.env.NODE_ENV}`);
+debug(`NODE_ENV is ${process.env.NODE_ENV}`);
 if (process.env.NODE_ENV === 'development') {
 	app.use(require('webpack-dev-middleware')(compiler, {
 		noInfo: true,
@@ -28,9 +29,9 @@ app.get('*', (req, res) => {
 const port = process.env.PORT || 3000;
 app.listen(port, 'localhost', err => {
 	if (err) {
-		console.log(err);
+		debug(err);
 		return;
 	}
 
-	console.log(`Listening at http://localhost:${port}`);
+	debug(`Listening at http://localhost:${port}`);
 });
