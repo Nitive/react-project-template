@@ -7,6 +7,9 @@ const loadersByExt = loadersByExtension({
 	'yaml|yml': 'json!yaml',
 	'png|jpg|cur|gif': 'url?limit=5000',
 	'woff|woff2': 'url?limit=1',
+	'svg': 'url?limit=10000',
+	'css': 'style!css',
+	'styl': 'style!css!stylus?paths=node_modules',
 });
 
 const defaultOptions = {
@@ -60,14 +63,6 @@ export default function makeWebpackConfig(options = defaultOptions) {
 					test: /\.jsx?$/,
 					loader: 'babel',
 					include: path.join(root, 'app'),
-				},
-				{
-					test: /\.css$/,
-					loader: 'style!css!',
-				},
-				{
-					test: /\.svg$/,
-					loader: 'url?limit=10000',
 				},
 			]),
 		},

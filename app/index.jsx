@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { ReduxRouter, reduxReactRouter } from 'redux-router';
 import routes from './routes';
 import reducer from 'reducers/index';
+import 'styles/app.styl';
 
 
 const createStoreWithMiddleWare = compose(

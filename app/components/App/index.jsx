@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import './styles.css';
 
 export default class App extends React.Component {
 
@@ -10,7 +11,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<header>header</header>
+				<header className='header'>header</header>
 				{this.props.children}
 			</div>
 		);
