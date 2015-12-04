@@ -5,7 +5,8 @@ export default class IndexPage extends React.Component {
 	render() {
 		return (
 			<div>
-				index page
+				<h1>index page</h1>
+				<div>some text</div>
 			</div>
 		);
 	}

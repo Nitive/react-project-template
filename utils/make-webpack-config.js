@@ -34,13 +34,14 @@ export default function makeWebpackConfig(options = defaultOptions) {
 		plugins: [
 			new webpack.DefinePlugin({
 				OPTIMIZED: options.optimize,
+				OPEN_FILE_URL: '"/open-in-editor"',
 				'process.env': {
 					NODE_ENV: JSON.stringify(process.env.NODE_ENV),
 				},
 			}),
 		],
 
-		devtool: debug ? 'eval' : 'source-map',
+		devtool: debug ? 'eval' : '#source-map',
 		bail: !debug,
 		debug: debug,
 
@@ -54,6 +55,15 @@ export default function makeWebpackConfig(options = defaultOptions) {
 			root: [
 				path.join(root, 'node_modules'),
 				root,
+			],
+		},
+		babel: {
+			plugins: [
+				require('babel-plugin-react-display-name'),
+				require('babel-plugin-source-wrapper').configure({
+					basePath: process.cwd(),
+					runtime: true,
+				}),
 			],
 		},
 

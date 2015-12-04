@@ -16,6 +16,7 @@ if (process.env.NODE_ENV === 'development') {
 	}));
 
 	app.use(require('webpack-hot-middleware')(compiler));
+	app.use(require('express-open-in-editor')());
 	app.use(require('morgan')('dev'));
 }
 
