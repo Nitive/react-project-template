@@ -12,15 +12,13 @@ const loadersByExt = loadersByExtension({
 	'styl': 'style!css!stylus?paths=node_modules',
 });
 
-const defaultOptions = {
-	optimize: false,
-};
-
 const root = path.join(__dirname, '..');
 const debug = process.env.NODE_ENV === 'development';
 const devEntry = ['webpack-hot-middleware/client', 'component-inspector/dist/react'];
 
-export default function makeWebpackConfig(options = defaultOptions) {
+export default function makeWebpackConfig(options = {}) {
+	options.optimize = options.optimize || false;
+
 	const config = {
 		entry: (debug ? devEntry : []).concat([
 			'./app/index',
