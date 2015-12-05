@@ -46,7 +46,7 @@
     "phantomjs": "^1.9.19",
     "phantomjs-polyfill": "0.0.1",
     "react": "^0.14.0",
-    "react-addons-test-utils": "^0.14.3",
+    "react-addons-test-utils": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
     "react-router": "^1.0.0-rc4",
@@ -56,11 +56,13 @@
     "redbox-react": "^1.1.1",
     "redux": "^3.0.4",
     "redux-router": "^1.0.0-beta3",
+    "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.4.2",
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.4.1"
+    "webpack-hot-middleware": "^2.4.1",
+    "yargs": "^3.31.0"
   },
   "repository": {
     "type": "git",

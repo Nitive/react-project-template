@@ -16,8 +16,12 @@ const root = path.join(__dirname, '..');
 const debug = process.env.NODE_ENV === 'development';
 const devEntry = ['webpack-hot-middleware/client', 'component-inspector/dist/react'];
 
-export default function makeWebpackConfig(options = {}) {
-	options.optimize = options.optimize || false;
+export default function makeWebpackConfig(opts = {}) {
+	const options = {
+		optimize: false,
+		breakpoints: false,
+		...opts,
+	};
 
 	const config = {
 		entry: (debug ? devEntry : []).concat([
@@ -39,7 +43,7 @@ export default function makeWebpackConfig(options = {}) {
 			}),
 		],
 
-		devtool: debug ? 'eval' : '#source-map',
+		devtool: (debug && !options.breakpoints) ? '#cheap-module-eval-source-map' : '#source-map',
 		bail: !debug,
 		debug: debug,
 

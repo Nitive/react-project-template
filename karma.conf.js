@@ -2,9 +2,10 @@
 
 require('babel/register');
 require('webpack');
+require('karma-webpack');
 var path = require('path');
 var webpackConfig = require('./utils/make-webpack-config')();
-webpackConfig.devtool = '#inline-source-map';
+webpackConfig.devtool = 'inline-source-map';
 
 
 module.exports = function(config) {

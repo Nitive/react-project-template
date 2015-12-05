@@ -2,9 +2,19 @@ import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
 import makeConfig from '../utils/make-webpack-config';
+import yargs from 'yargs';
 const debug = require('debug')('react-project-template');
+const argv = yargs.argv;
 
-const config = makeConfig();
+const options = {};
+if (argv.breakpoints) {
+	options.breakpoints = true;
+}
+if (argv.optimize) {
+	options.optimize = true;
+}
+
+const config = makeConfig(options);
 const app = express();
 const compiler = webpack(config);
 
