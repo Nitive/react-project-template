@@ -68,6 +68,7 @@ export default function makeWebpackConfig(opts = {}) {
 			alias: {
 				COSMOS_COMPONENTS: path.join(__dirname, '../app/components'),
 				COSMOS_FIXTURES: path.join(__dirname, '../app/components'),
+				sinon: 'sinon/pkg/sinon',
 			},
 		},
 
@@ -77,6 +78,7 @@ export default function makeWebpackConfig(opts = {}) {
 				root,
 			],
 		},
+
 		babel: process.env.NODE_ENV !== 'development' ? {} : {
 			plugins: [
 				require('babel-plugin-react-display-name'),
@@ -88,6 +90,7 @@ export default function makeWebpackConfig(opts = {}) {
 		},
 
 		module: {
+			noParse: [/node_modules\/sinon\//],
 			loaders: loadersByExt.concat([
 				{
 					test: /\.jsx?$/,
@@ -96,6 +99,11 @@ export default function makeWebpackConfig(opts = {}) {
 				},
 			]),
 		},
+		externals: {
+			'jsdom': 'window',
+			'cheerio': 'window',
+			'react/lib/ExecutionEnvironment': true,
+		}
 	};
 
 	if (options.optimize) {

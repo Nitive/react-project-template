@@ -1,12 +1,10 @@
 import portscanner from 'portscanner';
 import express from 'express';
 import webpack from 'webpack';
-import yargs from 'yargs';
 import path from 'path';
-
-import makeConfig from '../utils/make-webpack-config';
-const debug = require('debug')('react-project-template');
-const argv = yargs.argv;
+const argv = require('yargs').argv;
+const projectName = require('../package.json').name;
+const debug = require('debug')(projectName);
 
 const options = {};
 if (argv.breakpoints) {
@@ -16,6 +14,7 @@ if (argv.optimize) {
 	options.optimize = true;
 }
 
+import makeConfig from '../utils/make-webpack-config';
 const config = makeConfig(options);
 const app = express();
 const compiler = webpack(config);
