@@ -16,6 +16,7 @@ rules:
   indent: [2, 'tab']
   jsx-quotes: [2, 'prefer-single']
   id-length: 0
+  no-console: 0
 
 ecmaFeatures:
   jsx: true

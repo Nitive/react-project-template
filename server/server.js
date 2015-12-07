@@ -1,8 +1,10 @@
-import path from 'path';
+import portscanner from 'portscanner';
 import express from 'express';
 import webpack from 'webpack';
-import makeConfig from '../utils/make-webpack-config';
 import yargs from 'yargs';
+import path from 'path';
+
+import makeConfig from '../utils/make-webpack-config';
 const debug = require('debug')('react-project-template');
 const argv = yargs.argv;
 
@@ -19,7 +21,7 @@ const app = express();
 const compiler = webpack(config);
 
 debug(`NODE_ENV is ${process.env.NODE_ENV}`);
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'production') {
 	app.use(require('webpack-dev-middleware')(compiler, {
 		noInfo: true,
 		publicPath: config.output.publicPath,
@@ -30,19 +32,25 @@ if (process.env.NODE_ENV === 'development') {
 	app.use(require('morgan')('dev'));
 }
 
-app.use(express.static('static'));
+app.use(express.static('build'));
 
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, 'localhost', err => {
-	if (err) {
-		debug(err);
+portscanner.findAPortNotInUse(3000, 3010, 'localhost', (error, foundedPort) => {
+	if (error) {
+		console.log(error);
 		return;
 	}
-
-	debug(`Listening at http://localhost:${port}`);
+	const port = process.env.PORT || foundedPort;
+	app.listen(port, 'localhost', err => {
+		if (err) {
+			console.log(err);
+			return;
+		}
+		debug(`Listening at http://localhost:${port}`);
+	});
 });
+

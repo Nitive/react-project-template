@@ -5,13 +5,18 @@ export default class App extends React.Component {
 
 	static propTypes = {
 		children: PropTypes.element,
+		color: PropTypes.string,
+	}
+
+	static defaultProps = {
+		color: 'red',
 	}
 
 
 	render() {
 		return (
 			<div>
-				<header className='header'>header</header>
+				<header style={{background: this.props.color}} className='header'>header</header>
 				{this.props.children}
 			</div>
 		);

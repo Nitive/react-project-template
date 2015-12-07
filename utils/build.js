@@ -1,10 +1,8 @@
-/* eslint-disable no-console */
-
 import fs from 'fs';
 import path from 'path';
 import webpack from 'webpack';
 import filesize from 'filesize';
-import makeConfig from './utils/make-webpack-config';
+import makeConfig from './make-webpack-config';
 
 const config = makeConfig({
 	optimize: true,
