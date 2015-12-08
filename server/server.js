@@ -2,22 +2,24 @@ import portscanner from 'portscanner';
 import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
+import debuga from 'express-debuga';
 const argv = require('yargs').argv;
 const projectName = require('../package.json').name;
 const debug = require('debug')(projectName);
 
-const options = {};
+const buildOptions = {};
 if (argv.breakpoints) {
-	options.breakpoints = true;
+	buildOptions.breakpoints = true;
 }
 if (argv.optimize) {
-	options.optimize = true;
+	buildOptions.optimize = true;
 }
 
 import makeConfig from '../utils/make-webpack-config';
-const config = makeConfig(options);
+const config = makeConfig(buildOptions);
 const app = express();
 const compiler = webpack(config);
+
 
 debug(`NODE_ENV is ${process.env.NODE_ENV}`);
 if (process.env.NODE_ENV !== 'production') {
@@ -29,6 +31,7 @@ if (process.env.NODE_ENV !== 'production') {
 	app.use(require('webpack-hot-middleware')(compiler));
 	app.use(require('express-open-in-editor')());
 	app.use(require('morgan')('dev'));
+	app.use(debuga());
 }
 
 app.use(express.static('build'));
