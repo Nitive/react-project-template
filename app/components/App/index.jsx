@@ -16,7 +16,9 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<header style={{background: this.props.color}} className='header'>header</header>
+				<header style={{ background: this.props.color }} className='header'>
+					header
+				</header>
 				{this.props.children}
 			</div>
 		);

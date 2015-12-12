@@ -55,4 +55,3 @@ portscanner.findAPortNotInUse(3000, 3010, 'localhost', (error, foundedPort) => {
 		debug(`Listening at http://localhost:${port}`);
 	});
 });
-

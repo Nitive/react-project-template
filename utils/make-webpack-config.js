@@ -13,7 +13,7 @@ const loadersByExt = loadersByExtension({
 });
 
 const root = path.join(__dirname, '..');
-const entry = [];
+const entry = ['babel-core/polyfill'];
 const debug = process.env.NODE_ENV !== 'production';
 
 if (process.env.NODE_ENV === 'development') {
@@ -96,6 +96,9 @@ export default function makeWebpackConfig(opts = {}) {
 					test: /\.jsx?$/,
 					loader: 'babel',
 					include: path.join(root, 'app'),
+					query: {
+						cacheDirectory: true,
+					},
 				},
 			]),
 		},
@@ -103,7 +106,7 @@ export default function makeWebpackConfig(opts = {}) {
 			'jsdom': 'window',
 			'cheerio': 'window',
 			'react/lib/ExecutionEnvironment': true,
-		}
+		},
 	};
 
 	if (options.optimize) {
