@@ -1,6 +1,10 @@
 import React, { PropTypes } from 'react';
-import './styles.css';
+import CSSModules from 'react-css-modules';
+import styles from './styles.css';
 
+import Header from 'components/Header';
+
+@CSSModules(styles)
 export default class App extends React.Component {
 
 	static propTypes = {
@@ -15,10 +19,9 @@ export default class App extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<header style={{ background: this.props.color }} className='header'>
-					header
-				</header>
+			<div styleName='app'>
+				<Header />
+				<h1 styleName='app__title'>Title</h1>
 				{this.props.children}
 			</div>
 		);

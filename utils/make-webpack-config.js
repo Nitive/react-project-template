@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import loadersByExtension from './loadersByExtension';
 
 const loadersByExt = loadersByExtension({
@@ -8,8 +9,6 @@ const loadersByExt = loadersByExtension({
 	'png|jpg|cur|gif': 'url?limit=5000',
 	'woff|woff2': 'url?limit=1',
 	'svg': 'url?limit=10000',
-	'css': 'style!css',
-	'styl': 'style!css!stylus?paths=node_modules',
 });
 
 const root = path.join(__dirname, '..');
@@ -55,6 +54,10 @@ export default function makeWebpackConfig(opts = {}) {
 					return new RegExp('./' + componentName + '/([^/]+)fixture.js$');
 				},
 			}),
+			new ExtractTextPlugin('main.css', {
+				allChunks: true,
+				disable: debug,
+			}),
 		],
 
 		devtool: (debug && !options.breakpoints) ? '#cheap-module-eval-source-map' : '#source-map',
@@ -89,6 +92,12 @@ export default function makeWebpackConfig(opts = {}) {
 			],
 		},
 
+		postcss: () => [
+			require('postcss-normalize'),
+			require('autoprefixer'),
+			require('precss'),
+		],
+
 		module: {
 			noParse: [/node_modules\/sinon\//],
 			loaders: loadersByExt.concat([
@@ -99,9 +108,13 @@ export default function makeWebpackConfig(opts = {}) {
 					query: {
 						cacheDirectory: true,
 					},
+				}, {
+					test: /\.css$/,
+					loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss'),
 				},
 			]),
 		},
+
 		externals: {
 			'jsdom': 'window',
 			'cheerio': 'window',
