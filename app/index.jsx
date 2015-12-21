@@ -1,24 +1,23 @@
 import React from 'react';
 import { render } from 'react-dom';
-import createHistory from 'history/lib/createBrowserHistory';
-import { createStore, compose } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { ReduxRouter, reduxReactRouter } from 'redux-router';
+import { Router } from 'react-router';
 import routes from './routes';
+import createHistory from 'history/lib/createBrowserHistory';
+import { syncReduxAndRouter } from 'redux-simple-router';
 import reducer from 'reducers/index';
 
 
-const createStoreWithMiddleWare = compose(
-	reduxReactRouter({
-		routes,
-		createHistory,
-	}),
-)(createStore);
+const store = createStore(reducer);
+const history = createHistory();
 
-const store = createStoreWithMiddleWare(reducer);
+syncReduxAndRouter(history, store);
 
 const router = (
-	<ReduxRouter routes={routes} />
+	<Router history={history}>
+		{routes}
+	</Router>
 );
 
 const app = (
