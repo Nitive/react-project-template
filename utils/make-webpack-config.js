@@ -49,10 +49,6 @@ export default function makeWebpackConfig(opts = {}) {
 				'process.env': {
 					NODE_ENV: JSON.stringify(process.env.NODE_ENV),
 				},
-				'window.COSMOS_COMPONENTS_PATTERN': /^\.\/(.+)[^(test)]\.jsx?$/,
-				'window.COSMOS_GET_FIXTURES_PATTERN': componentName => {
-					return new RegExp('./' + componentName + '/([^/]+)fixture.js$');
-				},
 			}),
 			new ExtractTextPlugin('main.css', {
 				allChunks: true,
@@ -120,6 +116,7 @@ export default function makeWebpackConfig(opts = {}) {
 		externals: {
 			'jsdom': 'window',
 			'cheerio': 'window',
+			'react/lib/ReactContext': 'window',
 			'react/lib/ExecutionEnvironment': true,
 		},
 	};

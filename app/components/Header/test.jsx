@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import Header from './index';
 
 describe('<Header />', () => {
-	it('should do something', () => {
-		shallow(<Header />).find('.header').should.have.length(1);
+	it('should has header', () => {
+		shallow(<Header />).find('header').should.have.length(1);
 	});
 });

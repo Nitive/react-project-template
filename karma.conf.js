@@ -9,7 +9,7 @@ webpackConfig.devtool = 'inline-source-map';
 
 
 module.exports = function(config) {
-	var browsers = [process.env.DEBUG ? 'Chrome' : 'PhantomJS'];
+	var browsers = ['Chrome'];
 
 	config.set({
 		autoWatch: true,
