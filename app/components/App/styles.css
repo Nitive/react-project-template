@@ -2,7 +2,14 @@
 	background-color: floralwhite;
 	padding-x: 20px;
 
-	&__title {
-		color: green;
-	}
+}
+
+.title {
+	color: green;
+}
+
+.wrapper {
+	background-color: green;
+	width: 700px;
+	text-align: center;
 }
