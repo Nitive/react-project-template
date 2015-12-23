@@ -3,6 +3,7 @@ import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
 import debuga from 'express-debuga';
+import 'colors';
 const argv = require('yargs').argv;
 const projectName = require('../package.json').name;
 const debug = require('debug')(projectName);
@@ -55,6 +56,6 @@ portscanner.findAPortNotInUse(3000, 3010, 'localhost', (error, foundedPort) => {
 			console.log(err);
 			return;
 		}
-		debug(`Listening at http://localhost:${port}`);
+		debug(`Listening at ${`http://localhost:${port}`.underline.magenta}`);
 	});
 });

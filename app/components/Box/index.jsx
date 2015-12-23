@@ -4,9 +4,31 @@ import styles from './styles.css';
 
 
 function Box(props) {
+	const code = `
+		=>
+		==
+		!=
+		===
+		!==
+		i++
+		j--
+		<=
+		||
+		//
+		...spread
+		/** */
+		<!-- www -->
+		@decorator
+		#{}
+		!!var
+	`;
 	return (
 		<div styleName='box' style={{ backgroundColor: props.color }}>
-			box
+			<code>
+				<pre>
+					{code}
+				</pre>
+			</code>
 		</div>
 	);
 }

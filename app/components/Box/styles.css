@@ -1,4 +1,13 @@
 .box {
-	height: 100px;
-	width: 100px;
+	all: initial;
+	padding-left: 20px;
+	width: 500px;
+	display: block;
+
+	pre {
+		white-space: pre-wrap;
+		font-family: 'Fira Code';
+		font-variant-ligatures: contextual;
+		font-feature-settings: 'calt' 1;
+	}
 }
