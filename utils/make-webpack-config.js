@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import NyanProgressPlugin from 'nyan-progress-webpack-plugin';
 import loadersByExtension from './loadersByExtension';
 
 const loadersByExt = loadersByExtension({
@@ -126,6 +127,7 @@ export default function makeWebpackConfig(opts = {}) {
 			new webpack.optimize.OccurenceOrderPlugin(),
 			new webpack.optimize.DedupePlugin(),
 			new webpack.optimize.UglifyJsPlugin({ compressor: { warnings: false } }),
+			new NyanProgressPlugin(),
 		);
 	} else {
 		config.plugins.push(

@@ -10,7 +10,7 @@ const config = makeConfig({
 const compiler = webpack(config);
 
 compiler.run(function Compile(err, stats) {
-	console.log('Complited in ' + ((stats.endTime - stats.startTime) / 1000));
+	// console.log('Complited in ' + ((stats.endTime - stats.startTime) / 1000));
 
 	const errors = stats.compilation.errors;
 	if (errors && errors.length) {
