@@ -6,17 +6,9 @@ import styles from './styles.css';
 function Box(props) {
 	const code = `
 		=>
-		==
-		!=
 		===
 		!==
-		i++
-		j--
 		<=
-		||
-		//
-		...spread
-		/** */
 		<!-- www -->
 		@decorator
 		#{}

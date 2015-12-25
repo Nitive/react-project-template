@@ -5,8 +5,6 @@ import path from 'path';
 import debuga from 'express-debuga';
 import 'colors';
 const argv = require('yargs').argv;
-const projectName = require('../package.json').name;
-const debug = require('debug')(projectName);
 
 const buildOptions = {};
 if (argv.breakpoints) {
@@ -22,7 +20,6 @@ const app = express();
 const compiler = webpack(config);
 
 
-debug(`NODE_ENV is ${process.env.NODE_ENV}`);
 if (process.env.NODE_ENV !== 'production') {
 	app.use(require('webpack-dev-middleware')(compiler, {
 		noInfo: true,
@@ -56,6 +53,6 @@ portscanner.findAPortNotInUse(3000, 3010, 'localhost', (error, foundedPort) => {
 			console.log(err);
 			return;
 		}
-		debug(`Listening at ${`http://localhost:${port}`.underline.magenta}`);
+		console.log(`Listening at ${`http://localhost:${port}`.underline.magenta}`);
 	});
 });
