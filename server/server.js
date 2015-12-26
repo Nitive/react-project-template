@@ -6,11 +6,13 @@ import 'colors';
 const argv = require('yargs').argv;
 
 const getPrerenderedMakeup = do {
+	let fn;
 	try {
-		require('../build/prerender/bundle');
+		fn = require('../build/prerender/bundle');
 	} catch (err) {
-		() => '';
+		fn = () => '';
 	}
+	fn;
 };
 
 const buildOptions = {};

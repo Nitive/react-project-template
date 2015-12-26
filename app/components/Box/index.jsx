@@ -3,7 +3,7 @@ import CSSModules from 'react-css-modules';
 import styles from './styles.css';
 
 @CSSModules(styles)
-export default class Box {
+export default class Box extends React.Component {
 
 	static propTypes = {
 		color: PropTypes.string,
