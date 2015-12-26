@@ -116,6 +116,7 @@ export default function makeWebpackConfig(opts = {}) {
 					include: path.join(root, 'app'),
 					query: {
 						cacheDirectory: true,
+						compact: false,
 					},
 				}, {
 					test: /\.css$/,
