@@ -20,18 +20,18 @@ const router = (
 );
 
 
-const content = () => {
+const content = do {
 	if (process.env.NODE_ENV === 'development') {
 		const DevTools = require('./containers/DevTools');
-		return (
-			<div>
-				{router}
-				<DevTools />
-			</div>
-		);
+		<div>
+			{router}
+			<DevTools />
+		</div>
+	} else {
+		router;
 	}
-	return router;
-}();
+};
+
 
 const app = (
 	<Provider store={store}>
