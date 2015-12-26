@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "description": "a tempalate for quick start with React.js",
   "scripts": {
-    "lint": "eslint --fix --ext .jsx --ext .js app server",
-    "lint:nofix": "eslint --ext .jsx --ext .js app server",
-    "pretest": "npm run lint:nofix",
+    "lint": "npm run lint:js",
+    "lint:js": "eslint --fix --ext .jsx --ext .js app server",
+    "lint:js:nofix": "eslint --ext .jsx --ext .js app server",
+    "pretest": "npm run lint:js:nofix",
     "test": "karma start --single-run=true",
     "build": "NODE_ENV=production babel-node utils/build.js",
     "start": "NODE_ENV=development nodemon --watch server/* --exec babel-node server/server",
@@ -116,13 +117,18 @@
   "homepage": "https://github.com/Nitive/react-project-template#readme",
   "dependencies": {
     "colors": "^1.1.2",
+    "jade": "^1.11.0",
     "node-bin": "^5.3.0"
   },
   "config": {
     "pre-git": {
       "commit-msg": "conventional",
-      "pre-commit": ["npm run lint:nofix"],
-      "pre-push": ["npm test"],
+      "pre-commit": [
+        "npm run lint:js:nofix"
+      ],
+      "pre-push": [
+        "npm test"
+      ],
       "post-commit": [],
       "post-merge": []
     }

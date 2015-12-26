@@ -13,35 +13,45 @@ const loadersByExt = loadersByExtension({
 });
 
 const root = path.join(__dirname, '..');
-const entry = ['babel-core/polyfill'];
-const debug = process.env.NODE_ENV !== 'production';
 
-if (process.env.NODE_ENV === 'development') {
-	entry.push('webpack-hot-middleware/client');
-	entry.push('component-inspector/dist/react');
-}
-
-if (process.env.NODE_ENV === 'playground') {
-	entry.push('webpack-hot-middleware/client?reload=true');
-	entry.push('cosmos-js');
-} else {
-	entry.push('./app/index');
-}
 
 export default function makeWebpackConfig(opts = {}) {
+	const entry = [];
+	const debug = process.env.NODE_ENV !== 'production';
+
+	if (process.env.NODE_ENV === 'development') {
+		entry.push('webpack-hot-middleware/client');
+		entry.push('component-inspector/dist/react');
+	}
+
+	if (process.env.NODE_ENV === 'playground') {
+		entry.push('webpack-hot-middleware/client?reload=true');
+		entry.push('cosmos-js');
+	}
+
 	const options = {
 		optimize: false,
 		breakpoints: false,
+		prerender: false,
 		...opts,
 	};
 
+	if (options.prerender) {
+		entry.push('./app/prerender');
+	} else {
+		entry.push('./app/index');
+	}
+
 	const config = {
-		entry,
+		entry: options.prerender ? entry : ['babel-core/polyfill', ...entry],
 		output: {
-			path: path.join(root, 'build'),
+			path: path.join(root, 'build', options.prerender ? 'prerender' : 'public'),
 			filename: 'bundle.js',
 			publicPath: '/',
+			libraryTarget: options.prerender ? 'commonjs2' : undefined,
 		},
+
+		target: options.prerender ? 'node' : 'web',
 
 		plugins: [
 			new webpack.DefinePlugin({
@@ -115,8 +125,8 @@ export default function makeWebpackConfig(opts = {}) {
 		},
 
 		externals: {
-			'jsdom': 'window',
-			'cheerio': 'window',
+			jsdom: 'window',
+			cheerio: 'window',
 			'react/lib/ReactContext': 'window',
 			'react/lib/ExecutionEnvironment': true,
 		},
@@ -127,12 +137,18 @@ export default function makeWebpackConfig(opts = {}) {
 			new webpack.optimize.OccurenceOrderPlugin(),
 			new webpack.optimize.DedupePlugin(),
 			new webpack.optimize.UglifyJsPlugin({ compressor: { warnings: false } }),
-			new NyanProgressPlugin(),
 		);
 	} else {
 		config.plugins.push(
 			new webpack.HotModuleReplacementPlugin(),
 			new webpack.NoErrorsPlugin(),
+		);
+	}
+
+	if (options.prerender) {
+		config.plugins.push(
+			new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
+			new NyanProgressPlugin(),
 		);
 	}
 

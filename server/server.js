@@ -1,10 +1,16 @@
 import portscanner from 'portscanner';
 import express from 'express';
 import webpack from 'webpack';
-import path from 'path';
 import debuga from 'express-debuga';
 import 'colors';
 const argv = require('yargs').argv;
+
+let getPrerenderedMakeup;
+try {
+	getPrerenderedMakeup = require('../build/prerender/bundle');
+} catch (err) {
+	getPrerenderedMakeup = () => '';
+}
 
 const buildOptions = {};
 if (argv.breakpoints) {
@@ -16,8 +22,12 @@ if (argv.optimize) {
 
 import makeConfig from '../utils/make-webpack-config';
 const config = makeConfig(buildOptions);
-const app = express();
 const compiler = webpack(config);
+
+const app = express();
+app.set('view engine', 'jade');
+app.set('views', '.');
+
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -35,11 +45,12 @@ if (process.env.NODE_ENV !== 'production') {
 	app.use(debuga());
 }
 
-app.use(express.static('build'));
+app.use(express.static('./build/public'));
 
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, '../index.html'));
+	const application = getPrerenderedMakeup(req);
+	res.render('./index', { content: application });
 });
 
 portscanner.findAPortNotInUse(3000, 3010, 'localhost', (error, foundedPort) => {

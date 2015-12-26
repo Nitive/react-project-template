@@ -7,8 +7,24 @@
 		background-color: red;
 	}
 
-	&__title {
-		color: green;
+}
+
+.menu-item {
+	padding: 10px;
+	background-color: #666;
+	color: white;
+	text-transform: none;
+
+	&:hover {
+		background-color: #444;
 	}
 
+	&:active {
+		background-color: #222;
+	}
+
+	&.active {
+		pointer-events: none;
+		background-color: red;
+	}
 }
