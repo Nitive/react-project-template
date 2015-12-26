@@ -10,16 +10,13 @@ import configureStore from 'store/configureStore';
 const store = configureStore();
 
 export default req => {
-	let app;
 	const location = createLocation(req.url);
 
-	match({ routes, location }, (error, redirect, renderProps) => {
-		app = ReactDOMServer.renderToStaticMarkup(
+	return match({ routes, location }, (error, redirect, renderProps) => {
+		return ReactDOMServer.renderToStaticMarkup(
 			<Provider store={store} key='provider'>
 				<RoutingContext {...renderProps} />
 			</Provider>
 		);
 	});
-
-	return app;
 };

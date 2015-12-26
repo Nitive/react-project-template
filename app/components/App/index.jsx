@@ -26,11 +26,6 @@ export default class App extends React.Component {
 				<h1 styleName='title'>Title</h1>
 				{this.props.children}
 				<Box />
-				<Box />
-				<Box />
-				<div styleName='wrapper'>
-					<Box />
-				</div>
 			</div>
 		);
 	}

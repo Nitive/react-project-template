@@ -13,7 +13,7 @@
 	padding: 10px;
 	background-color: #666;
 	color: white;
-	text-transform: none;
+	text-decoration: none;
 
 	&:hover {
 		background-color: #444;
@@ -25,6 +25,6 @@
 
 	&.active {
 		pointer-events: none;
-		background-color: red;
+		background-color: green;
 	}
 }
