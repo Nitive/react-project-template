@@ -124,9 +124,7 @@
   "config": {
     "pre-git": {
       "commit-msg": "conventional",
-      "pre-commit": [
-        "npm run lint"
-      ],
+      "pre-commit": [],
       "pre-push": [
         "npm test"
       ],

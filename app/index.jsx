@@ -26,7 +26,7 @@ const content = do {
 		<div>
 			{router}
 			<DevTools />
-		</div>
+		</div>;
 	} else {
 		router;
 	}
