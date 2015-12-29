@@ -27,12 +27,12 @@ export default class Box extends React.Component {
 			!!var
 		`;
 		return (
-			<div styleName='box' style={{ backgroundColor: this.props.color }}>
-				<code>
-					<pre>
+			<div data-gemini='box' styleName='box' style={{ backgroundColor: this.props.color }}>
+				<pre>
+					<code>
 						{code}
-					</pre>
-				</code>
+					</code>
+				</pre>
 			</div>
 		);
 	}
