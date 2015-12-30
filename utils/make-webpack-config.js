@@ -23,7 +23,7 @@ export default function makeWebpackConfig(opts = {}) {
 
 	if (dev) {
 		entry.push('webpack-hot-middleware/client');
-		entry.push('component-inspector/dist/react');
+		// entry.push('component-inspector/dist/react');
 	}
 
 	if (playground) {
@@ -45,7 +45,7 @@ export default function makeWebpackConfig(opts = {}) {
 	}
 
 	const config = {
-		entry: options.prerender ? entry : ['babel-core/polyfill', ...entry],
+		entry: options.prerender ? entry : ['babel-polyfill', ...entry],
 		output: {
 			path: path.join(root, 'build', options.prerender ? 'prerender' : 'public'),
 			filename: 'bundle.js',
@@ -91,15 +91,15 @@ export default function makeWebpackConfig(opts = {}) {
 			],
 		},
 
-		babel: !dev ? {} : {
-			plugins: [
-				require('babel-plugin-react-display-name'),
-				require('babel-plugin-source-wrapper').configure({
-					basePath: process.cwd(),
-					runtime: true,
-				}),
-			],
-		},
+		// babel: !dev ? {} : {
+		// 	plugins: [
+		// 		require('babel-plugin-react-display-name'),
+		// 		require('babel-plugin-source-wrapper').configure({
+		// 			basePath: process.cwd(),
+		// 			runtime: true,
+		// 		}),
+		// 	],
+		// },
 
 		postcss: () => [
 			require('stylelint'),

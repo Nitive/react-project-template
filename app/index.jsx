@@ -20,17 +20,18 @@ const router = (
 );
 
 
-const content = do {
+const content = (() => {
 	if (process.env.NODE_ENV === 'development') {
-		const DevTools = require('./containers/DevTools');
-		<div>
-			{router}
-			<DevTools />
-		</div>;
-	} else {
-		router;
+		const DevTools = require('./containers/DevTools').default;
+		return (
+			<div>
+				{router}
+				<DevTools />
+			</div>
+		);
 	}
-};
+	return router;
+})();
 
 
 const app = (

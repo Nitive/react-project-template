@@ -21,6 +21,7 @@ rules:
   new-cap: [2, {'capIsNewExceptions': ['CSSModules']}]
   no-multiple-empty-lines: [2, { max: 5 }]
   no-unused-expressions: 0
+  space-infix-ops: 0 # TODO remove after fix github.com/babel/babel-eslint/issues/226
 
 ecmaFeatures:
   jsx: true

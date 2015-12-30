@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-require('babel/register');
+require('babel-register');
 require('webpack');
 require('karma-webpack');
 var path = require('path');

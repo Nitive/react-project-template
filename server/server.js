@@ -5,15 +5,13 @@ import debuga from 'express-debuga';
 import 'colors';
 const argv = require('yargs').argv;
 
-const getPrerenderedMakeup = do {
-	let fn;
+const getPrerenderedMakeup = (() => {
 	try {
-		fn = require('../build/prerender/bundle');
+		return require('../build/prerender/bundle');
 	} catch (err) {
-		fn = () => '';
+		return () => '';
 	}
-	fn;
-};
+})();
 
 const buildOptions = {};
 if (argv.breakpoints) {
