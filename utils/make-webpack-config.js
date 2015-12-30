@@ -18,13 +18,15 @@ const root = path.join(__dirname, '..');
 export default function makeWebpackConfig(opts = {}) {
 	const entry = [];
 	const debug = process.env.NODE_ENV !== 'production';
+	const dev = process.env.NODE_ENV === 'development';
+	const playground = process.env.NODE_ENV === 'playground';
 
-	if (process.env.NODE_ENV === 'development') {
+	if (dev) {
 		entry.push('webpack-hot-middleware/client');
 		entry.push('component-inspector/dist/react');
 	}
 
-	if (process.env.NODE_ENV === 'playground') {
+	if (playground) {
 		entry.push('webpack-hot-middleware/client?reload=true');
 		entry.push('cosmos-js');
 	}
@@ -89,7 +91,7 @@ export default function makeWebpackConfig(opts = {}) {
 			],
 		},
 
-		babel: process.env.NODE_ENV !== 'development' ? {} : {
+		babel: !dev ? {} : {
 			plugins: [
 				require('babel-plugin-react-display-name'),
 				require('babel-plugin-source-wrapper').configure({
@@ -114,10 +116,6 @@ export default function makeWebpackConfig(opts = {}) {
 					test: /\.jsx?$/,
 					loader: 'babel',
 					include: path.join(root, 'app'),
-					query: {
-						cacheDirectory: true,
-						compact: false,
-					},
 				}, {
 					test: /\.css$/,
 					loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss'),
