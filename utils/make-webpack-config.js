@@ -69,7 +69,7 @@ export default function makeWebpackConfig(opts = {}) {
 			}),
 		],
 
-		devtool: (debug && !options.breakpoints) ? '#cheap-module-eval-source-map' : '#source-map',
+		devtool: (debug && !options.breakpoints) ? '#cheap-module-eval-source-map' : 'eval', // '#source-map',
 		bail: !debug,
 		debug,
 
@@ -104,7 +104,7 @@ export default function makeWebpackConfig(opts = {}) {
 		postcss: () => [
 			require('stylelint'),
 			require('postcss-reporter')({ clearMessages: true }),
-			require('postcss-normalize'),
+			require('postcss-font-magician')(),
 			require('autoprefixer'),
 			require('precss'),
 		],

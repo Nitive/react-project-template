@@ -6,6 +6,7 @@ import { Router } from 'react-router';
 import routes from './routes';
 import createHistory from 'history/lib/createBrowserHistory';
 import { syncReduxAndRouter } from 'redux-simple-router';
+import 'styles/app.css';
 
 
 const store = configureStore();

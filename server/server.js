@@ -44,9 +44,9 @@ if (process.env.NODE_ENV !== 'production') {
 	app.use(require('express-open-in-editor')());
 	app.use(require('morgan')('dev'));
 	app.use(debuga());
+} else {
+	app.use(express.static('./build/public'));
 }
-
-app.use(express.static('./build/public'));
 
 
 app.get('*', (req, res) => {

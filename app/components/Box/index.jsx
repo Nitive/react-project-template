@@ -16,23 +16,11 @@ export default class Box extends React.Component {
 
 
 	render() {
-		const code = `
-			=>
-			===
-			!==
-			<=
-			<!-- www -->
-			@decorator
-			#{}
-			!!var
-		`;
 		return (
 			<div data-gemini='box' styleName='box' style={{ backgroundColor: this.props.color }}>
-				<pre>
-					<code>
-						{code}
-					</code>
-				</pre>
+				<div styleName='text'>
+					box
+				</div>
 			</div>
 		);
 	}

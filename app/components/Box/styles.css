@@ -1,13 +1,11 @@
 .box {
 	all: initial;
-	padding-left: 20px;
-	width: 500px;
-	display: block;
+	display: flex;
+	width: 100px;
+	height: @width;
+}
 
-	pre {
-		white-space: pre-wrap;
-		font-family: 'Fira Code';
-		font-variant-ligatures: contextual;
-		font-feature-settings: 'calt' 1;
-	}
+.text {
+	margin: auto;
+	font-family: 'Open Sans';
 }
