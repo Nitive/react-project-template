@@ -1,7 +1,6 @@
 .header {
 	display: flex;
 	background-color: yellowgreen;
-	padding-y: 30px;
 
 	@media(width <= 720px) {
 		background-color: red;

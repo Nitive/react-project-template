@@ -66,6 +66,7 @@
     "portscanner": "^1.0.0",
     "postcss": "^5.0.13",
     "postcss-autoreset": "^1.1.1",
+    "postcss-axis": "^0.1.1",
     "postcss-font-magician": "^1.4.0",
     "postcss-loader": "^0.8.0",
     "postcss-normalize": "^0.1.2",
