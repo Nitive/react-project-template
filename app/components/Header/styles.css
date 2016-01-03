@@ -1,6 +1,8 @@
 .header {
+	all: initial;
 	display: flex;
 	background-color: yellowgreen;
+	font: inherit;
 
 	@media(width <= 720px) {
 		background-color: red;
@@ -23,7 +25,8 @@
 	}
 
 	&.active {
+		background-color: tomato;
 		pointer-events: none;
-		background-color: green;
+		z-index: 1;
 	}
 }

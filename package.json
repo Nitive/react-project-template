@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "npm run lint:css --silent && npm run lint:js --silent",
     "lint:js": "eslint --ext .jsx --ext .js app server",
-    "lint:css": "stylelint app/**/*.css",
+    "lint:css": "stylelint 'app/**/*.css'",
     "fix": "eslint --fix --ext .jsx --ext .js app server",
     "pretest": "npm run lint --silent",
     "test": "karma start --single-run=true",

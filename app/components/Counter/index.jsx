@@ -1,5 +1,8 @@
 import React, { PropTypes } from 'react';
+import CSSModules from 'react-css-modules';
+import styles from './styles.css';
 
+@CSSModules(styles)
 export default class Counter extends React.Component {
 
 	static propTypes = {
@@ -27,10 +30,10 @@ export default class Counter extends React.Component {
 
 	render() {
 		return (
-			<div>
-				{this.state.count}
-				<button onClick={this.addCount(1)}>+</button>
-				<button onClick={this.addCount(-1)}>-</button>
+			<div styleName='counter'>
+				<div styleName='count'>{this.state.count}</div>
+				<button styleName='button' onClick={this.addCount(1)}>+</button>
+				<button styleName='button' onClick={this.addCount(-1)}>-</button>
 			</div>
 		);
 	}

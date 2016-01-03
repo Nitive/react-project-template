@@ -9,7 +9,6 @@ export default class Box extends React.Component {
 		color: PropTypes.string,
 	}
 
-
 	static defaultProps = {
 		color: 'yellowgreen',
 	}
