@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import { RoutingContext, match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import routes from './routes';
@@ -11,12 +11,15 @@ const store = configureStore();
 
 export default req => {
 	const location = createLocation(req.url);
+	let app;
 
-	return match({ routes, location }, (error, redirect, renderProps) => {
-		return ReactDOMServer.renderToStaticMarkup(
+	match({ routes, location }, (error, redirect, renderProps) => {
+		app = renderToString(
 			<Provider store={store} key='provider'>
 				<RoutingContext {...renderProps} />
 			</Provider>
 		);
 	});
+
+	return app;
 };

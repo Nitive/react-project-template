@@ -69,7 +69,7 @@ export default function makeWebpackConfig(opts = {}) {
 			}),
 		],
 
-		devtool: (debug && !options.breakpoints) ? '#cheap-module-eval-source-map' : 'eval', // '#source-map',
+		devtool: (debug && !options.breakpoints) ? 'eval' : '#source-map', // #cheap-module-eval-source-map for sourcemaps without breakpoints
 		bail: !debug,
 		debug,
 

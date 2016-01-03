@@ -1,3 +1,4 @@
+import fs from 'fs';
 import portscanner from 'portscanner';
 import express from 'express';
 import webpack from 'webpack';
@@ -7,7 +8,7 @@ const argv = require('yargs').argv;
 
 const getPrerenderedMakeup = (() => {
 	try {
-		return require('../build/prerender/bundle');
+		return require('../build/prerender/bundle').default;
 	} catch (err) {
 		return () => '';
 	}
@@ -45,6 +46,12 @@ if (process.env.NODE_ENV !== 'production') {
 	app.use(require('morgan')('dev'));
 	app.use(debuga());
 } else {
+	try {
+		fs.accessSync('./build/public/bundle.js', fs.F_OK);
+		fs.accessSync('./build/prerender/bundle.js', fs.F_OK);
+	} catch (err) {
+		throw new Error('Run `npm run bulid` to build static before'.red.bgBlack);
+	}
 	app.use(express.static('./build/public'));
 }
 
