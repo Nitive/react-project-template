@@ -4,9 +4,7 @@ import styles from './styles.css';
 
 
 const TodoHeader = props => (
-	<div>
-		TodoHeader
-	</div>
+	<input styleName='input' placeholder='What needs to be done?' />
 );
 
 export default CSSModules(TodoHeader, styles);
