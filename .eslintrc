@@ -22,6 +22,7 @@ rules:
   no-multiple-empty-lines: [2, { max: 5 }]
   no-unused-expressions: 0
   space-infix-ops: 0 # TODO remove after fix github.com/babel/babel-eslint/issues/226
+  no-unused-vars: [2, { args: 'after-used', argsIgnorePattern: '^(props)$' }]
 
 ecmaFeatures:
   jsx: true

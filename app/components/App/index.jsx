@@ -4,18 +4,12 @@ import styles from './styles.css';
 
 
 import Header from 'components/Header';
-import Box from 'components/Box';
 
 @CSSModules(styles)
 export default class App extends React.Component {
 
 	static propTypes = {
 		children: PropTypes.element,
-		color: PropTypes.string,
-	}
-
-	static defaultProps = {
-		color: 'red',
 	}
 
 
@@ -23,9 +17,7 @@ export default class App extends React.Component {
 		return (
 			<div styleName='app'>
 				<Header />
-				<h1 styleName='title'>Title</h1>
 				{this.props.children}
-				<Box />
 			</div>
 		);
 	}

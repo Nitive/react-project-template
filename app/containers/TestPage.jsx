@@ -1,4 +1,5 @@
 import React from 'react';
+import Box from 'components/Box';
 
 
 export default class TestPage extends React.Component {
@@ -6,7 +7,7 @@ export default class TestPage extends React.Component {
 		return (
 			<div>
 				<h1>test page</h1>
-				<div>some text</div>
+				<Box />
 			</div>
 		);
 	}

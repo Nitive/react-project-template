@@ -2,9 +2,20 @@ require('chai').should();
 import React from 'react';
 import { shallow } from 'enzyme';
 import Header from './index';
+import styles from './styles.css';
+
+let header;
 
 describe('<Header />', () => {
-	it('should has header', () => {
-		shallow(<Header />).find('header').should.have.length(1);
+	before(() => {
+		header = shallow(<Header />).find(`.${styles.header}`);
+	});
+
+	it('should has .header', () => {
+		header.should.have.length(1);
+	});
+
+	it('should have links', () => {
+		header.contains('</a>').should.be.true;
 	});
 });

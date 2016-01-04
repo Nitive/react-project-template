@@ -1,5 +1,5 @@
 import fs from 'fs';
-import portscanner from 'portscanner';
+import { findAPortNotInUse } from 'portscanner';
 import express from 'express';
 import webpack from 'webpack';
 import debuga from 'express-debuga';
@@ -61,7 +61,7 @@ app.get('*', (req, res) => {
 	res.render('./index', { content: application });
 });
 
-portscanner.findAPortNotInUse(3000, 3010, 'localhost', (error, foundedPort) => {
+findAPortNotInUse(3000, 3010, 'localhost', (error, foundedPort) => {
 	if (error) {
 		console.log(error);
 		return;
