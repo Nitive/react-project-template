@@ -7,7 +7,8 @@ import TodoFooter from 'components/TodoFooter';
 
 
 const TodoApp = props => (
-	<div>
+	<div styleName='todoapp'>
+		<h1 styleName='title'>todos</h1>
 		<TodoHeader />
 		<TodoMainSection />
 		<TodoFooter />

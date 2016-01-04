@@ -1,0 +1,12 @@
+.todoapp {
+	all: initial;
+	display: block;
+	font: inherit;
+}
+
+.title {
+	margin: 0;
+	font-size: 100px;
+	font-weight: 100;
+	text-align: center;
+}
