@@ -16,6 +16,7 @@
 .checkbox {
 	margin-y: auto;
 	padding: 3px;
+	cursor: pointer;
 }
 
 .complited {

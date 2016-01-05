@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import TodoApp from 'components/TodoApp';
@@ -10,7 +10,20 @@ import * as TodoActions from 'actions/todos';
 	dispatch => ({ actions: bindActionCreators(TodoActions, dispatch) }),
 )
 export default class IndexPage extends React.Component {
+
+	static propTypes = {
+		todos: PropTypes.array.isRequired,
+		location: PropTypes.object.isRequired,
+	}
+
+
 	render() {
-		return <TodoApp {...this.props} />;
+		const todoFilter = this.props.location.pathname.split('/').pop();
+		const todos = {
+			activeTodos: this.props.todos.filter(todo => !todo.complited),
+			complitedTodos: this.props.todos.filter(todo => todo.complited),
+			todoFilter,
+		};
+		return <TodoApp {...this.props} {...todos} />;
 	}
 }

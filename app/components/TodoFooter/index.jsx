@@ -5,12 +5,11 @@ import { Link } from 'react-router';
 
 
 const TodoFooter = props => {
-	const todosCount = props.todos.filter(todo => !todo.completed).length;
-	if (!todosCount) return null;
+	if (!props.todos.length) return null;
 
 	return (
 		<footer styleName='footer'>
-			<span>{todosCount} items left</span>
+			<span>{props.activeTodos.length} items left</span>
 			<div>
 				<Link activeClassName={styles.filterActive} styleName='filter' to='/todo/all'>All</Link>
 				<Link activeClassName={styles.filterActive} styleName='filter' to='/todo/active'>Active</Link>
@@ -23,6 +22,7 @@ const TodoFooter = props => {
 
 TodoFooter.propTypes = {
 	todos: PropTypes.array.isRequired,
+	activeTodos: PropTypes.array.isRequired,
 };
 
 export default CSSModules(TodoFooter, styles);

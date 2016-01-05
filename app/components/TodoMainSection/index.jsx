@@ -5,10 +5,21 @@ import TodoItem from 'components/TodoItem';
 
 
 const TodoMainSection = props => {
-	const todos = props.todos.map((todo, index) => (
+	const todosArray = (() => {
+		switch (props.todoFilter) {
+		case 'all': return props.todos;
+		case 'active': return props.activeTodos;
+		case 'complited': return props.complitedTodos;
+		default: return props.todos;
+		}
+	})();
+
+	const todos = todosArray.map(todo => (
 		<TodoItem
-			key={index}
+			key={todo.id}
+			id={todo.id}
 			complited={todo.complited}
+			toggle={props.toggleTodo}
 		>
 			{todo.text}
 		</TodoItem>
@@ -23,6 +34,10 @@ const TodoMainSection = props => {
 
 TodoMainSection.propTypes = {
 	todos: PropTypes.array.isRequired,
+	activeTodos: PropTypes.array.isRequired,
+	complitedTodos: PropTypes.array.isRequired,
+	toggleTodo: PropTypes.func.isRequired,
+	todoFilter: PropTypes.string,
 };
 
 export default CSSModules(TodoMainSection, styles);
