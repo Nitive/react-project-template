@@ -7,7 +7,7 @@ import styles from './styles.css';
 const Header = props => (
 	<header styleName='header'>
 		<IndexLink activeClassName={styles.active} styleName='menu-item' to='/'>Main</IndexLink>
-		<Link activeClassName={styles.active} styleName='menu-item' to='/test'>Test</Link>
+		<Link activeClassName={styles.active} styleName='menu-item' to='/todo'>Todo</Link>
 		<Link activeClassName={styles.active} styleName='menu-item' to='/another'>Another</Link>
 	</header>
 );

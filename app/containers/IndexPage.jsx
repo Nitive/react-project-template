@@ -1,9 +1,14 @@
 import React from 'react';
-import TodoApp from 'components/TodoApp';
+import Box from 'components/Box';
 
 
-export default class IndexPage extends React.Component {
+export default class TestPage extends React.Component {
 	render() {
-		return <TodoApp />;
+		return (
+			<div>
+				<h1>index page</h1>
+				<Box />
+			</div>
+		);
 	}
 }

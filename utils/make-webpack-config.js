@@ -107,6 +107,7 @@ export default function makeWebpackConfig(opts = {}) {
 			require('postcss-reporter')({ clearMessages: true }),
 			require('postcss-font-magician')(),
 			require('postcss-axis'),
+			require('postcss-initial')({ reset: 'inherited' }),
 			require('autoprefixer'),
 			require('precss'),
 		],

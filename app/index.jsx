@@ -2,20 +2,17 @@ import React from 'react';
 import { render } from 'react-dom';
 import configureStore from 'store/configureStore';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router';
+import { Router, browserHistory } from 'react-router';
 import routes from './routes';
-import createHistory from 'history/lib/createBrowserHistory';
 import { syncReduxAndRouter } from 'redux-simple-router';
-import 'styles/app.css';
 
 
 const store = configureStore();
-const history = createHistory();
 
-syncReduxAndRouter(history, store);
+syncReduxAndRouter(browserHistory, store);
 
 const router = (
-	<Router history={history}>
+	<Router history={browserHistory}>
 		{routes}
 	</Router>
 );
