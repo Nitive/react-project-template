@@ -20,8 +20,8 @@ export default class IndexPage extends React.Component {
 	render() {
 		const todoFilter = this.props.location.pathname.split('/').pop();
 		const todos = {
-			activeTodos: this.props.todos.filter(todo => !todo.complited),
-			complitedTodos: this.props.todos.filter(todo => todo.complited),
+			activeTodos: this.props.todos.filter(todo => !todo.completed),
+			completedTodos: this.props.todos.filter(todo => todo.completed),
 			todoFilter,
 		};
 		return <TodoApp {...this.props} {...todos} />;

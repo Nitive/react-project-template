@@ -18,7 +18,7 @@ const compilers = [
 
 compilers.forEach(compiler => {
 	compiler.run((err, stats) => {
-		// console.log('Complited in ' + ((stats.endTime - stats.startTime) / 1000));
+		// console.log('Completed in ' + ((stats.endTime - stats.startTime) / 1000));
 
 		const errors = stats.compilation.errors;
 		if (errors && errors.length) {

@@ -7,7 +7,7 @@ export default function todos(state = [], action) {
 		return [{
 			id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
 			text: action.text,
-			complited: false,
+			completed: false,
 		}, ...state];
 
 	case types.TOGGLE_TODO:
@@ -15,7 +15,7 @@ export default function todos(state = [], action) {
 			if (todo.id === action.id) {
 				return {
 					...todo,
-					complited: !todo.complited,
+					completed: !todo.completed,
 				};
 			}
 			return todo;

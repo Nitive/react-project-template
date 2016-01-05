@@ -9,7 +9,7 @@ const TodoMainSection = props => {
 		switch (props.todoFilter) {
 		case 'all': return props.todos;
 		case 'active': return props.activeTodos;
-		case 'complited': return props.complitedTodos;
+		case 'completed': return props.completedTodos;
 		default: return props.todos;
 		}
 	})();
@@ -18,7 +18,7 @@ const TodoMainSection = props => {
 		<TodoItem
 			key={todo.id}
 			id={todo.id}
-			complited={todo.complited}
+			completed={todo.completed}
 			toggle={props.toggleTodo}
 		>
 			{todo.text}
@@ -35,7 +35,7 @@ const TodoMainSection = props => {
 TodoMainSection.propTypes = {
 	todos: PropTypes.array.isRequired,
 	activeTodos: PropTypes.array.isRequired,
-	complitedTodos: PropTypes.array.isRequired,
+	completedTodos: PropTypes.array.isRequired,
 	toggleTodo: PropTypes.func.isRequired,
 	todoFilter: PropTypes.string,
 };
