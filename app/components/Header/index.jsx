@@ -5,13 +5,11 @@ import styles from './styles.css';
 
 
 const Header = props => (
-	<div>
-		<header styleName='header'>
-			<IndexLink activeClassName={styles.active} styleName='menu-item' to='/'>Main</IndexLink>
-			<Link activeClassName={styles.active} styleName='menu-item' to='/test'>Test</Link>
-			<Link activeClassName={styles.active} styleName='menu-item' to='/another'>Another</Link>
-		</header>
-	</div>
+	<header styleName='header'>
+		<IndexLink activeClassName={styles.active} styleName='menu-item' to='/'>Main</IndexLink>
+		<Link activeClassName={styles.active} styleName='menu-item' to='/test'>Test</Link>
+		<Link activeClassName={styles.active} styleName='menu-item' to='/another'>Another</Link>
+	</header>
 );
 
 export default CSSModules(Header, styles);
