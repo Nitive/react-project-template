@@ -13,6 +13,7 @@ const TodoItem = props => {
 				{ props.completed && <path fill='#5dc2af' d='M72 25L42 71 27 56l-4 4 20 20 34-52z' /> }
 			</svg>
 			<span styleName='text'>{props.children}</span>
+			<div onClick={() => props.delete(props.id)} styleName='delete' />
 		</div>
 	);
 };
@@ -20,6 +21,7 @@ const TodoItem = props => {
 TodoItem.propTypes = {
 	children: PropTypes.string.isRequired,
 	completed: PropTypes.bool.isRequired,
+	delete: PropTypes.func.isRequired,
 };
 
 export default CSSModules(TodoItem, styles, { allowMultiple: true });

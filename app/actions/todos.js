@@ -10,6 +10,11 @@ export const toggleTodo = id => ({
 	id,
 });
 
+export const deleteTodo = id => ({
+	type: types.DELETE_TODO,
+	id,
+});
+
 export const clearCompleted = () => ({
 	type: types.CLEAR_COMPLETED,
 });

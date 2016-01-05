@@ -1,27 +1,58 @@
 .item {
 	all: inital;
 	display: flex;
-	height: 60px;
+	position: relative;
+	align-items: center;
 	border-bottom: 1px solid #ededed;
 	font: inherit;
-	line-height: @height;
-	white-space: pre-line;
-	word-break: break-all;
+	line-height: 1.2;
 
 	&:last-child {
 		border-bottom: none;
 	}
 }
 
+
 .checkbox {
-	margin-y: auto;
-	padding: 3px;
+	padding: 3px 7px;
 	cursor: pointer;
 }
 
-.completed {
-	.text {
+
+.text {
+	box-sizing: border-box;
+	flex: 1;
+	padding: 15px 50px 15px 5px;
+	transition: color .4s ease;
+	white-space: pre-line;
+	word-break: break-all;
+
+	.completed & {
 		color: #d9d9d9;
 		text-decoration: line-through;
+	}
+}
+
+
+.delete {
+	width: 40px;
+	height: 40px;
+	margin-right: 10px;
+	transition: color .2s ease-out;
+	color: transparent;
+	font-size: 30px;
+	text-align: center;
+	cursor: pointer;
+
+	.item:hover & {
+		color: #cc9a9a;
+	}
+
+	&:hover {
+		color: #af5b5e !important;
+	}
+
+	&::after {
+		content: '×';
 	}
 }
