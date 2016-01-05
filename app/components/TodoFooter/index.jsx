@@ -15,7 +15,11 @@ const TodoFooter = props => {
 				<Link activeClassName={styles.filterActive} styleName='filter' to='/todo/active'>Active</Link>
 				<Link activeClassName={styles.filterActive} styleName='filter' to='/todo/completed'>Completed</Link>
 			</div>
-			<button styleName='clear'>Clear completed</button>
+			<button
+				style={{ visibility: !props.completedTodos.length && 'hidden' }}
+				onClick={props.clearCompleted}
+				styleName='clear'
+			>Clear completed</button>
 		</footer>
 	);
 };
@@ -23,6 +27,8 @@ const TodoFooter = props => {
 TodoFooter.propTypes = {
 	todos: PropTypes.array.isRequired,
 	activeTodos: PropTypes.array.isRequired,
+	completedTodos: PropTypes.array.isRequired,
+	clearCompleted: PropTypes.func.isRequired,
 };
 
 export default CSSModules(TodoFooter, styles);

@@ -21,6 +21,9 @@ export default function todos(state = [], action) {
 			return todo;
 		});
 
+	case types.CLEAR_COMPLETED:
+		return state.filter(todo => !todo.completed);
+
 	default:
 		return state;
 	}
