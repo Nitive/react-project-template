@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './styles.css';
 import TodoItem from 'components/TodoItem';
 
 
 const TodoMainSection = props => {
-	const todos = [
-		{ text: 'first todo', complited: true },
-		{ text: 'second todo', complited: false },
-		{ text: 'third todo', complited: true },
-	].map((todo, index) => (
+	const todos = props.todos.map((todo, index) => (
 		<TodoItem
 			key={index}
 			complited={todo.complited}
@@ -23,6 +19,10 @@ const TodoMainSection = props => {
 			{todos}
 		</section>
 	);
+};
+
+TodoMainSection.propTypes = {
+	todos: PropTypes.array.isRequired,
 };
 
 export default CSSModules(TodoMainSection, styles);
