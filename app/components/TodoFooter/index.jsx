@@ -4,9 +4,9 @@ import styles from './styles.css';
 
 
 const TodoFooter = props => (
-	<div>
+	<footer>
 		TodoFooter
-	</div>
+	</footer>
 );
 
 export default CSSModules(TodoFooter, styles);

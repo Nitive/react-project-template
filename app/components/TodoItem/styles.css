@@ -1,0 +1,26 @@
+.item {
+	all: inital;
+	display: flex;
+	height: 60px;
+	border-bottom: 1px solid #ededed;
+	font: inherit;
+	line-height: @height;
+	white-space: pre-line;
+	word-break: break-all;
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.checkbox {
+	margin-y: auto;
+	padding: 3px;
+}
+
+.complited {
+	.text {
+		color: #d9d9d9;
+		text-decoration: line-through;
+	}
+}
