@@ -37,6 +37,7 @@
     "cosmos-js": "Nitive/cosmos",
     "css-loader": "^0.23.1",
     "debug": "^2.2.0",
+    "deep-freeze-node": "^1.1.1",
     "enzyme": "^1.2.0",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^2.1.1",

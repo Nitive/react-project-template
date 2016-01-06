@@ -6,18 +6,15 @@ webpackConfig.devtool = 'inline-source-map';
 
 
 module.exports = config => {
-	const browsers = ['Chrome'];
-
 	config.set({
 		autoWatch: true,
-		browsers,
+		browsers: ['Chrome'],
 		singleRun: false,
 		frameworks: ['mocha', 'chai-things', 'chai'],
 		preprocessors: {
 			'utils/tests.webpack.js': ['webpack', 'sourcemap'],
 		},
 		files: [
-			'node_modules/phantomjs-polyfill/bind-polyfill.js',
 			'utils/tests.webpack.js',
 		],
 		reporters: ['mocha'],
