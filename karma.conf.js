@@ -10,7 +10,7 @@ module.exports = config => {
 		autoWatch: true,
 		browsers: ['Chrome'],
 		singleRun: false,
-		frameworks: ['mocha', 'chai-things', 'chai'],
+		frameworks: ['mocha', 'chai-things', 'sinon-chai', 'chai', 'sinon'],
 		preprocessors: {
 			'utils/tests.webpack.js': ['webpack', 'sourcemap'],
 		},
