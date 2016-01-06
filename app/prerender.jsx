@@ -11,7 +11,7 @@ const store = configureStore();
 
 export default req => {
 	const location = createLocation(req.url);
-	let app;
+	let app = null;
 
 	match({ routes, location }, (error, redirect, renderProps) => {
 		app = renderToString(

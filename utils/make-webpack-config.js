@@ -37,6 +37,7 @@ export default function makeWebpackConfig(opts = {}) {
 		optimize: false,
 		breakpoints: false,
 		prerender: false,
+		nyan: true,
 		...opts,
 	};
 
@@ -152,6 +153,11 @@ export default function makeWebpackConfig(opts = {}) {
 	if (options.prerender) {
 		config.plugins.push(
 			new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
+		);
+	}
+
+	if (options.nyan) {
+		config.plugins.push(
 			new NyanProgressPlugin(),
 		);
 	}

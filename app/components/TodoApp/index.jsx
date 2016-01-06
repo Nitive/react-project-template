@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './styles.css';
-import TodoHeader from 'components/TodoHeader';
+import TodoHeader from 'components/TodoHeaderInput';
 import TodoMainSection from 'components/TodoMainSection';
 import TodoFooter from 'components/TodoFooter';
 

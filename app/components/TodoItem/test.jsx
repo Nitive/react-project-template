@@ -5,7 +5,7 @@ import { spy } from 'sinon';
 import TodoItem from './index';
 import styles from './styles.css';
 
-let todoItem;
+let todoItem = null;
 const [toggleTodo, deleteTodo, editTodo] = [spy(), spy(), spy()];
 
 describe('<TodoItem />', () => {

@@ -13,9 +13,11 @@ export default class TodoHeader extends React.Component {
 
 
 	handleKeyDown = event => {
+		const value = event.target.value.trim();
+		if (!value) return;
 		if (event.keyCode !== ENTER_KEY) return;
 		event.preventDefault();
-		this.props.addTodo(event.target.value);
+		this.props.addTodo(value);
 		event.target.value = '';
 	}
 
