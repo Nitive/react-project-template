@@ -23,6 +23,7 @@ export default class TodoHeader extends React.Component {
 	render() {
 		return (
 			<input
+				maxLength={140}
 				styleName='input'
 				placeholder='What needs to be done?'
 				onKeyDown={this.handleKeyDown}

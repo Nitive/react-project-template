@@ -21,6 +21,8 @@ export default function makeWebpackConfig(opts = {}) {
 	const dev = process.env.NODE_ENV === 'development';
 	const playground = process.env.NODE_ENV === 'playground';
 
+	const cssModulesLocalIdentName = !debug ? '[hash:base64:10]' : '[name]__[local]___[hash:base64:5]';
+
 	if (dev) {
 		entry.push('webpack-hot-middleware/client');
 		// entry.push('component-inspector/dist/react');
@@ -121,7 +123,7 @@ export default function makeWebpackConfig(opts = {}) {
 					include: path.join(root, 'app'),
 				}, {
 					test: /\.css$/,
-					loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss'),
+					loader: ExtractTextPlugin.extract('style', `css?modules&importLoaders=1&localIdentName=${cssModulesLocalIdentName}!postcss`),
 				},
 			]),
 		},

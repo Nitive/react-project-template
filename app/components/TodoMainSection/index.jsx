@@ -21,6 +21,7 @@ const TodoMainSection = props => {
 			completed={todo.completed}
 			toggle={props.toggleTodo}
 			delete={props.deleteTodo}
+			edit={props.editTodo}
 		>
 			{todo.text}
 		</TodoItem>
@@ -37,6 +38,7 @@ TodoMainSection.propTypes = {
 	todos: PropTypes.array.isRequired,
 	activeTodos: PropTypes.array.isRequired,
 	completedTodos: PropTypes.array.isRequired,
+	editTodo: PropTypes.func.isRequired,
 	toggleTodo: PropTypes.func.isRequired,
 	deleteTodo: PropTypes.func.isRequired,
 	todoFilter: PropTypes.string,

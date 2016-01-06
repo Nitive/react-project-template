@@ -16,6 +16,10 @@
 .checkbox {
 	padding: 3px 7px;
 	cursor: pointer;
+
+	.editing & {
+		visibility: hidden;
+	}
 }
 
 
@@ -34,6 +38,19 @@
 }
 
 
+.input {
+	all: initial;
+	flex: 1;
+	padding: 14px 50px 13px 5px;
+	transition: color .4s ease;
+	border: 1px solid #999;
+	font: inherit;
+	white-space: pre-line;
+	word-break: break-all;
+	box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, .2);
+}
+
+
 .delete {
 	width: 40px;
 	height: 40px;
@@ -43,6 +60,10 @@
 	font-size: 30px;
 	text-align: center;
 	cursor: pointer;
+
+	.editing & {
+		display: none;
+	}
 
 	.item:hover & {
 		color: #cc9a9a;

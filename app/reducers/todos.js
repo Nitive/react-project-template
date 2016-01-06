@@ -21,6 +21,17 @@ export default function todos(state = [], action) {
 			return todo;
 		});
 
+	case types.EDIT_TODO:
+		return state.map(todo => {
+			if (todo.id === action.id) {
+				return {
+					...todo,
+					text: action.text,
+				};
+			}
+			return todo;
+		});
+
 	case types.DELETE_TODO:
 		return state.filter(todo => todo.id !== action.id);
 
